@@ -1,0 +1,387 @@
+/* --- スムーズスクロールの設定 --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    /* ヘッダーの高さ分ずらす */
+}
+
+/* --- リセット＆共通設定 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    background-color: #f7f4ef;
+    /* 淡いミルクティーベージュ */
+    color: #4a4640;
+    /* 優しいダークブラウン */
+    font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero {
+    height: 60vh;
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* 🌟上から下に向かって、ほぼ白から元のベージュへ優しく変化させます */
+    background: linear-gradient(180deg, #fafaf8 0%, #f2ede4 100%);
+}
+
+/* タイトル共通設定 */
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+}
+
+/* --- ヘッダー・ナビメニュー --- */
+.header {
+    position: fixed;
+    /* 画面上部に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(247, 244, 239, 0.9);
+    /* 背景を少し透過 */
+    backdrop-filter: blur(5px);
+    /* 背景を少しぼかす加工 */
+    z-index: 100;
+    border-bottom: 1px solid rgba(74, 70, 64, 0.05);
+    /* 薄い境界線 */
+}
+
+.header-container {
+    max-width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #7a736a;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-menu a:hover {
+    color: #4a4640;
+}
+
+/* 繊細な下線アニメーション */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #4a4640;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* --- ① メインビジュアル --- */
+.hero {
+    height: 60vh;
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #f2ede4;
+    /* メリハリをつける少し濃いベージュ */
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #7a736a;
+}
+
+/* --- ② 自己紹介（左：画像、右：文章） --- */
+.about {
+    padding: 100px 0;
+    background-color: #fafaf8;
+    /* ほぼ白に近いベージュ */
+}
+
+.about-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* 左側：画像の枠と丸み設定（枠いっぱいに広げる修正版） */
+.about-img {
+    flex: 0 0 260px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    /* きれいな正円にする */
+
+    /* ─── 🌟ポイント1：写真を枠いっぱいに広げるための調整 ─── */
+    overflow: hidden;
+    /* 丸い枠からはみ出た部分をカットする */
+    position: relative;
+    /* 画像の位置を調整するための基準にする */
+
+    /* 枠線の設定（outlineから通常のborder＋paddingに戻し、めり込みを防ぎます） */
+    border: 6px solid #e6dfd3;
+    /* 薄いベージュの枠線 */
+    padding: 0;
+    /* 写真を線の内側ギリギリまで広げるために0にします */
+    background-color: #fafaf8;
+    box-shadow: 0 10px 30px rgba(74, 70, 64, 0.04);
+}
+
+.about-img img {
+    /* ─── 🌟ポイント2：画像を丸枠いっぱいに拡大してフィットさせる ─── */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 縦横比を保ったまま、丸枠の隙間を埋めるように拡大 */
+    object-position: center;
+    /* 画像の中心が丸の真ん中にくるようにする */
+}
+
+/* --- ③ 実績 --- */
+.works {
+    padding: 100px 0;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.card-link:hover {
+    transform: translateY(-5px);
+    /* ホバー時に上に浮き上がる */
+}
+
+.card {
+    background-color: #fafaf8;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-link:hover .card {
+    box-shadow: 0 10px 30px rgba(74, 70, 64, 0.06);
+}
+
+.card-img {
+    /* ─── 🌟ここを修正 ─── */
+    height: auto;
+    /* 🌟高さを固定(160px)にするのをやめ、画像の高さに自動で合わせます */
+    aspect-ratio: 16 / 10;
+    /* 🌟枠の比率を一般的なノートPCの画面（16:10）に固定してすっきり見せます */
+
+    background-color: #fafaf8;
+    /* 万が一の隙間もカードと同じ白に近いベージュにして馴染ませます */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* はみ出た部分をカット */
+}
+
+/* 実際に中に表示されるスクショ画像の設定 */
+.card-img img {
+    width: 100%;
+    /* 横幅を枠いっぱいに広げる */
+    height: 100%;
+    /* 縦幅も枠いっぱいに広げる */
+
+    /* ─── 🌟ここをcoverに戻します ─── */
+    object-fit: cover;
+    /* 🌟枠の比率を固定したため、coverに戻すことで左右の余白が完全に消え、ぴったりフィットします */
+    object-position: top center;
+    /* サイトの一番上（ナビメニュー）を基準に表示 */
+}
+
+.card-info {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.85rem;
+    color: #7a736a;
+}
+
+.view-more {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 15px;
+    font-size: 0.8rem;
+    color: #9c9384;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover .view-more {
+    color: #4a4640;
+}
+
+/* --- ④ お問い合わせ --- */
+.contact {
+    padding: 100px 0;
+    background-color: #f2ede4;
+    text-align: center;
+}
+
+.contact-desc {
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    color: #7a736a;
+}
+
+.contact-tools {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tool-item {
+    background-color: #fafaf8;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* --- フッター --- */
+footer {
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #9c9384;
+    background-color: #f7f4ef;
+}
+
+/* --- 📱 スマホ用レスポンシブ設定 --- */
+@media (max-width: 768px) {
+    .about-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-img {
+        flex: 0 0 200px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 30px;
+    }
+
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .nav-menu ul {
+        gap: 15px;
+    }
+}
+
+/* --- ✨ スクロールフェードイン用（JSと連動） --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

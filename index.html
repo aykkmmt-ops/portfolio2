@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ayaka portfolio | Web Coding & Design</title>
+    <!-- Google Fonts 読み込み（韓国風に合う上品なフォント） -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link
+        href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.jpg" type="image/png">
+</head>
+
+<body>
+
+    <!-- ヘッダー＆ナビゲーションメニュー -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">ayaka portfolio</div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#works">Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ① メインビジュアル（パターンA） -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Web Coding & Design</h1>
+            <p>デザインを忠実に再現し、価値あるサイトへ。</p>
+        </div>
+    </section>
+
+    <!-- ② 自己紹介セクション -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about-flex">
+                <!-- 左側：画像 -->
+                <div class="about-img">
+                    <!-- ご自身の写真を用意したら src="ここに画像ファイル名" に書き換えてください -->
+                    <img src="profilephoto1.jpg" alt="ayaka">
+                </div>
+
+                <!-- 右側：文章 -->
+                <div class="about-text">
+                    <p>神奈川県在住。<br>
+                        HTML/CSS/JavaScriptを用いたWebコーディングを中心に活動しています。</p>
+                    <p>また、Adobe Premiere Proを用いた動画編集の<br>
+                        実務経験（YouTubeショート動画等）があり、<br>
+                        現在はInstagram運用についても勉強中です。</p><br>
+                    <p>単にサイトを構築するだけでなく、動画やSNSを絡めた多角的なアプローチで、<br>
+                        クライアント様の課題解決に貢献します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ 実績セクション -->
+    <section id="works" class="works">
+        <div class="container">
+            <h2 class="section-title">Web Coding Works</h2>
+
+            <div class="card-grid">
+                <!-- 実績1：ダンススタジオ -->
+                <a href="../index.html" target="_blank" rel="noopener noreferrer" class="card-link">
+                    <div class="card">
+                        <div class="card-img">
+                            <!-- 画像を入れる場合はここに <img src="studio.jpg" alt="ダンススタジオ"> -->
+                            <img src="dance1.png" alt="ダンススタジオ">
+                        </div>
+                        <div class="card-info">
+                            <h3>架空ダンススタジオ サイト制作</h3>
+                            <p class="card-text">担当：コーディング (HTML/CSS/JS)</p>
+                            <span class="view-more">View Site →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 実績2：カフェ -->
+                <a href="../ayaka_ishii_/index.html" target="_blank" rel="noopener noreferrer" class="card-link">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="cafe1.png" alt="カフェ">
+                        </div>
+                        <div class="card-info">
+                            <h3>架空カフェ サイト制作</h3>
+                            <p class="card-text">担当：コーディング (HTML/CSS/JS)</p>
+                            <span class="view-more">View Site →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ④ お問い合わせセクション -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="contact-desc">お仕事のご依頼やご相談は、各種ツールよりお気軽にご連絡ください。<br>原則24時間以内に返信いたします。</p>
+
+            <div class="contact-tools">
+                <div class="tool-item">
+                    <a href="mailto:i.ayaka09@icloud.com?subject=【ayaka portfolio】お仕事のご依頼・ご相談" class="tool-item">
+                        <span class="tool-name">Mail</span>
+                    </a>
+                </div>
+                <div class="tool-item">
+                    <a href="https://discord.gg/yfhKZrpR" target="_blank" rel="noopener noreferrer" class="tool-item">
+                        <span class="tool-name">Discord</span>
+                    </a>
+                </div>
+                <div class="tool-item">
+                    <a href="https://line.me/ti/p/ESUOCNxnU9" target="_blank" rel="noopener noreferrer"
+                        class="tool-item">
+                        <span class="tool-name">LINE</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2026 ayaka portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <!-- スクロール演出用のJS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
